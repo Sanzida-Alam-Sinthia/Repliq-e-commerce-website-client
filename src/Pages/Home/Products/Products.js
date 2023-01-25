@@ -13,10 +13,10 @@ const Products = () => {
 
     return (
         <div className='justify-center'>
-            <div className='items-center text-center mb-10  text-yellow-400'>
+            <div className='items-center text-center mb-10'>
 
-                <h2 className=" items-center text-center text-4xl font-bold mb-10 text-indigo-800"> Our Popular Products</h2>
-                <p className='text-lg text-indigo-900 font-semibold'>I mainly work in meaningful events as Photographer. Here are some of my services: </p>
+                <h2 className=" items-center text-center text-4xl font-bold mb-10 text-black"> Our Popular Products</h2>
+                <p className='text-lg text-indigo-900 font-semibold'> Here are some of our popular products: </p>
             </div>
             <div className='grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:m-12 p-10'>
                 {
