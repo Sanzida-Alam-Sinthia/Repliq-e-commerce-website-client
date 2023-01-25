@@ -10,10 +10,10 @@ const Banner = () => {
                 </div>
                 <div class="flex ">
                     <div class="flex flex-col flex-3 gap-4">
-                        <div class="w-full font-bold text-3xl  ">
-                            <h2> Welcome To Repliq E-Commerce Site!</h2>
+                        <div class="w-full font-bold text-4xl text-indigo-800 ">
+                            <h2> Welcome To Repliq E-Commerce Site</h2>
                         </div>
-                        <div class="w-full font-semibold  ">
+                        <div class="w-full font-bold text-indigo-900 ">
                             <h2>Trustable ad Reliable Market place with great user experience</h2>
                         </div>
 
