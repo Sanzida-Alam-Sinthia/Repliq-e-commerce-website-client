@@ -31,17 +31,17 @@ const AllCustomers = () => {
     return (
         <div>
             <div>
-                <h2 className="text-3xl">All Users</h2>
+                <h2 className="text-2xl text-center bg-gray-50 font-bold mb-10">Customers Details</h2>
                 <div className="overflow-x-auto">
-                    <table className="table w-full">
-                        <thead>
+                    <table className="table w-full text-md text-center text-black dark:text-gray-400">
+                        <thead className='text-md mb-2 text-gray-900 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
                             <tr>
                                 <th></th>
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Role</th>
                                 <th>Admin</th>
-                                <th>Delete</th>
+                                {/* <th>Delete</th> */}
                             </tr>
                         </thead>
                         <tbody>
@@ -51,7 +51,7 @@ const AllCustomers = () => {
                                     <td>{user.name}</td>
                                     <td>{user.email}</td>
                                     <td>{user.role}</td>
-                                    <td>{user?.role !== 'admin' && <button onClick={() => handleMakeAdmin(user._id)} className='text-white bg-purple-700 hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-purple-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"'>Make Admin</button>}</td>
+                                    <td>{user?.role !== 'admin' && <button onClick={() => handleMakeAdmin(user._id)} className='text-white bg-purple-700 hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-purple-300 font-medium rounded-full text-sm px-3 py-2.5 text-center mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"'>Make Admin</button>}</td>
                                     <>
                                         {/* {
                                         user?.role === 'seller'
@@ -59,7 +59,7 @@ const AllCustomers = () => {
 
                                     } */}
                                     </>
-                                    <td><button className='text-white bg-purple-700 hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-purple-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"'>Delete</button></td>
+                                    {/* <td><button className='text-white bg-purple-700 hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-purple-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"'>Delete</button></td> */}
                                 </tr>)
                             }
 
