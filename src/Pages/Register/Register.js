@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 
@@ -21,16 +22,16 @@ const Register = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                // toast('User Created Successfully.')
+                toast('User Created Successfully.')
                 const userInfo = {
                     displayName: data.name,
                     role: data.role
                 }
-                // updateUser(userInfo)
-                //     .then(() => {
-                //         saveUser(data.name, data.email)
-                //     })
-                //     .catch(err => console.log(err));
+                updateUser(userInfo)
+                    .then(() => {
+                        saveUser(data.name, data.email, data.role)
+                    })
+                    .catch(err => console.log(err));
             })
             .catch(error => {
                 console.log(error)
@@ -39,23 +40,22 @@ const Register = () => {
 
     }
 
+    const saveUser = (name, email, role) => {
+        const user = { name, email, role };
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                // console.log('save user', data);
+                setCreatedUserEmail(email);
+            })
 
-    // const saveUser = (name, email) => {
-    //     const user = { name, email };
-    //     fetch('http://localhost:5000/users', {
-    //         method: 'POST',
-    //         headers: {
-    //             'content-type': 'application/json'
-    //         },
-    //         body: JSON.stringify(user)
-    //     })
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             // console.log('save user', data);
-    //             setCreatedUserEmail(email);
-    //         })
-
-    // }
+    }
     return (
         // <div className='md:flex md:justify-center m-10'>
         //     <div class="flex flex-col w-full max-w-md mt-10 mb-10 px-4 py-8 bg-white rounded-lg shadow dark:bg-gray-800 sm:px-6 md:px-8 lg:px-10">
