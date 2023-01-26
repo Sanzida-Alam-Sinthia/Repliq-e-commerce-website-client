@@ -1,6 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../../../contexts/AuthProvider';
 
 const Navbar = () => {
+    const { user, logOut } = useContext(AuthContext)
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(err => console.log(err))
+
+    }
     return (
         <div>
 
@@ -14,28 +22,38 @@ const Navbar = () => {
                                 </a>
                                 <div class="hidden md:block">
                                     <div class="flex items-baseline ml-10 space-x-4">
-                                        <a class="text-black hover:text-indigo-700 dark:hover:text-white px-3 py-2 rounded-md text-md font-medium" href="/">
+                                        <a class="text-black hover:text-indigo-700 dark:hover:text-white px-3 py-2 rounded-md text-md font-bold" href="/">
                                             Home
                                         </a>
 
-                                        <a class="text-black hover:text-indigo-700 dark:hover:text-white px-3 py-2 rounded-md text-md font-medium" href="/#">
+                                        <a class="text-black hover:text-indigo-700 dark:hover:text-white px-3 py-2 rounded-md text-md font-bold" href="/dashboard">
                                             Admin Dashboard
                                         </a>
-                                        <a class="text-black hover:text-indigo-700 dark:hover:text-white px-3 py-2 rounded-md text-md font-medium" href="/#">
+                                        <a class="text-black hover:text-indigo-700 dark:hover:text-white px-3 py-2 rounded-md text-md font-bold " href="/#">
                                             Contact
                                         </a>
                                     </div>
                                 </div>
                             </div>
                             <div class="block">
+
                                 <div class="flex items-center ml-4 md:ml-6">
-                                    <a class="p-1 text-black hover:text-indigo-700 rounded-full focus:outline-none  focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 font-bold focus:ring-white" href='/login'>
-                                        Login
-                                    </a>
+                                    {
+                                        user?.uid ?
+                                            <>
+                                                <button class="p-1 text-black text-md hover:text-indigo-700 rounded-full focus:outline-none  focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 font-bold focus:ring-white" onClick={handleLogOut} to="/login">Log Out</button>
+
+                                            </>
+                                            :
+                                            <a class="p-1 text-black text-md hover:text-indigo-700 rounded-full focus:outline-none  focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 font-bold focus:ring-white" href='/login'>
+                                                Login
+                                            </a>
+                                    }
+
                                     <div class="relative ml-3">
                                         <div class="relative inline-block text-left">
                                             <div>
-                                                <button type="button" class="  flex items-center justify-center w-full rounded-md  px-4 py-2 text-sm font-bold text-black hover:text-indigo-700 dark:text-gray-50 hover:bg-gray-50 dark:hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-gray-500" id="options-menu">
+                                                <button type="button" class="  flex items-center justify-center w-full rounded-md  px-4 py-2 text-sm font-bold text-black text-md hover:text-indigo-700 dark:text-gray-50 hover:bg-gray-50 dark:hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-gray-500" id="options-menu">
                                                     View Cart
                                                 </button>
                                             </div>
