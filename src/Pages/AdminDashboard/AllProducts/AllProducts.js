@@ -7,14 +7,14 @@ const AllProducts = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     const [showModal, setShowModal] = React.useState(false);
-    const [createdProducts, setCreatedProduct] = useState('')
+
     const [sellerProduct, setSellerProduct] = useState(null);
-    // const [token] = useToken(createdUserEmail);
+
 
     const { data: products = [], refetch } = useQuery({
         queryKey: ['products'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/products');
+            const res = await fetch('https://repliq-dashboard-server-side.vercel.app/products');
             const data = await res.json();
             return data;
         }
@@ -26,13 +26,12 @@ const AllProducts = () => {
             price: data.price,
             stock: data.stock,
             img: ''
-            // condition: data.condition,
-            // description: data.description,
+
         }
         console.log(product)
 
 
-        fetch('http://localhost:5000/products', {
+        fetch('https://repliq-dashboard-server-side.vercel.app/products', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -48,40 +47,7 @@ const AllProducts = () => {
 
             })
     }
-    // const handleNewProduct = (data) => {
-    //     console.log(data);
-    //     const userInfo = {
-    //         prodName: data.name,
-    //         seller: data.seller,
-    //         price: data.price,
-    //         stock: data.stock,
-    //         img: ''
-    //     }
 
-    //         .then(() => {
-    //             saveNewProduct(data.name, data.seller, data.price, data.stock, data.img)
-    //         })
-    //         .catch(err => console.log(err));
-
-
-
-    // }
-    // const saveNewProduct = (name, seller, price, stock, img) => {
-    //     const product = { name, seller, price, stock, img };
-    //     fetch('http://localhost:5000/products', {
-    //         method: 'POST',
-    //         headers: {
-    //             'content-type': 'application/json'
-    //         },
-    //         body: JSON.stringify(product)
-    //     })
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             // console.log('save user', data);
-    //             setCreatedProduct(name);
-    //         })
-
-    // }
     return (
         <div>
             <h2 className="text-2xl text-center bg-gray-50 font-bold mb-10">All Products Details</h2>
@@ -94,7 +60,7 @@ const AllProducts = () => {
                             <th>Seller Company</th>
                             <th>Price</th>
                             <th>Present Stock</th>
-                            {/* <th>Delete</th> */}
+
                         </tr>
                     </thead>
                     <tbody>
@@ -120,7 +86,7 @@ const AllProducts = () => {
                         type="button"
                         onClick={() => setShowModal(true)}
                     >
-                        Add A New User
+                        Add A New Product
                     </button>
                     {showModal ? (
                         <>
@@ -133,7 +99,7 @@ const AllProducts = () => {
                                         {/*header*/}
                                         <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
                                             <h3 className="text-3xl font-semibold">
-                                                Add A New User
+                                                Add A New Product
                                             </h3>
                                             <button
                                                 className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"

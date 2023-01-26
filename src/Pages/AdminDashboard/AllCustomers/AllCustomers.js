@@ -14,7 +14,7 @@ const AllCustomers = () => {
     const { data: users = [], refetch } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/users');
+            const res = await fetch('https://repliq-dashboard-server-side.vercel.app/users');
             const data = await res.json();
             return data;
         }
@@ -36,7 +36,7 @@ const AllCustomers = () => {
     }
     const saveNewUser = (name, email, role) => {
         const user = { name, email, role };
-        fetch('http://localhost:5000/users', {
+        fetch('https://repliq-dashboard-server-side.vercel.app/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -51,7 +51,7 @@ const AllCustomers = () => {
 
     }
     const handleMakeAdmin = id => {
-        fetch(`http://localhost:5000/users/admin/${id}`, {
+        fetch(`https://repliq-dashboard-server-side.vercel.app/users/admin/${id}`, {
             method: 'PUT',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`

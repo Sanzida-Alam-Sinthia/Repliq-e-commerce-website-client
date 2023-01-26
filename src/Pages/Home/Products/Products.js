@@ -15,8 +15,8 @@ const Products = () => {
         <div className='justify-center'>
             <div className='items-center text-center mb-10'>
 
-                <h2 className=" items-center text-center text-4xl font-bold mb-10 text-black"> Our Popular Products</h2>
-                <p className='text-lg text-indigo-900 font-semibold'> Here are some of our popular products: </p>
+                <h2 className=" items-center text-center bg-indigo-200  text-3xl p-2 font-bold mt-10 mb-6 text-black">Buy Your Desired iPhone At The Cheapest Rate!</h2>
+                <p className='text-lg font-bold text-pink-700 '> Here are some of our popular products: </p>
             </div>
             <div className='grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:m-12 p-10'>
                 {
