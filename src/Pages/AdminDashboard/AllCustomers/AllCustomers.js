@@ -99,6 +99,7 @@ const AllCustomers = () => {
                         </tbody>
                     </table>
                 </div>
+                {/* modal for adding new user */}
                 <div className='m-12'>
                     <>
                         <button
